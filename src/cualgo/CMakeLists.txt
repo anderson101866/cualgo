@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9)
 project(cualgo LANGUAGES CUDA CXX)
 
 find_package(pybind11 REQUIRED)
-pybind11_add_module(cualgo cualgo.cu)
+pybind11_add_module(cualgo main.cu)
 
 target_include_directories(cualgo PRIVATE ${CMAKE_SOURCE_DIR}/include)
 

@@ -4,6 +4,9 @@
 #include <pybind11/numpy.h>
 #include "cualgo_backends/graph/floydwarshall.cuh"
 
+#define STRINGIFY(x) #x
+#define MACRO_STRINGIFY(x) STRINGIFY(x)
+
 namespace bk = cualgo_backends;
 namespace py = pybind11;
 
@@ -15,9 +18,14 @@ PYBIND11_MODULE(cualgo, m) {
 A Pytnon library containing basic algorithm with GPU-accelerated computing.
 
 Provide the following facility with CUDA implementation:
-  Graph-Related Algorithm
-  - Floyd-Warshall
+    Graph-Related Algorithm
+    - Floyd-Warshall
 )";
+#ifdef VERSION_INFO
+    m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
+#else
+    m.attr("__version__") = "dev";
+#endif
 
     m.def("floydwarshall", 
           py::overload_cast<std::vector<std::vector<double>>&&>(&bk::graph::FloydWarshallDriver<double>), 
