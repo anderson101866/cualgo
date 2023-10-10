@@ -2,7 +2,7 @@
 
 #pragma once
 #include <memory>
-#include "cualgo_backends/cuda_exception.hpp"
+#include "cualgo_backends/cuda_exception.cuh"
 
 #define _CONCAT(a, b) _CONCAT_IMPL(a, b)
 #define _CONCAT_IMPL(a, b) a ## b

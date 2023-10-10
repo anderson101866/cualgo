@@ -2,7 +2,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/numpy.h>
-#include "cualgo_backends/graph/floydwarshall.hpp"
+#include "cualgo_backends/graph/floydwarshall.cuh"
 
 namespace bk = cualgo_backends;
 namespace py = pybind11;

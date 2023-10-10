@@ -5,7 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include "cualgo_backends/common.hpp"
-#include "cualgo_backends/malloc_helper.hpp"
+#include "cualgo_backends/malloc_helper.cuh"
 
 namespace cualgo_backends {
 namespace graph {
