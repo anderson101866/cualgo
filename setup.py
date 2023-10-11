@@ -6,6 +6,7 @@ from pathlib import Path
 
 from setuptools import Extension, setup
 from setuptools.command.build_ext import build_ext
+import shutil
 
 # Convert distutils Windows platform specifiers to CMake -A arguments
 PLAT_TO_CMAKE = {
@@ -112,13 +113,34 @@ class CMakeBuild(build_ext):
         build_temp = Path(self.build_temp) / ext.name
         if not build_temp.exists():
             build_temp.mkdir(parents=True)
+        #find cmake from python package
+        cmake = find_cmake()
+        #find c++ compiler
+        if not shutil.which('gcc'):
+            raise FileNotFoundError('"gcc" not found')
+        if not shutil.which('g++'):
+            raise FileNotFoundError('"g++" not found')
+        if not shutil.which('make'):
+            raise FileNotFoundError('"make" not found')
+        #find pybind11
+        import pybind11            
+        cmake_args += [f'-Dpybind11_DIR={pybind11.get_cmake_dir()}']
+        subprocess.run(
+            [cmake, ext.sourcedir, *cmake_args], cwd=build_temp, check=True
+        )
+        subprocess.run(
+            [cmake, "--build", ".", *build_args], cwd=build_temp, check=True
+        )
 
-        subprocess.run(
-            ["cmake", ext.sourcedir, *cmake_args], cwd=build_temp, check=True
-        )
-        subprocess.run(
-            ["cmake", "--build", ".", *build_args], cwd=build_temp, check=True
-        )
+def find_cmake():
+    cmake_path = shutil.which('cmake')
+    if not cmake_path:
+        import cmake
+        executable = next((name for name in os.listdir(cmake.CMAKE_BIN_DIR) if name == 'cmake' or name.lower() == 'cmake.exe'), None)
+        if not executable:
+            raise FileNotFoundError('"cmake" not found')
+        cmake_path = os.fspath(Path(cmake.CMAKE_BIN_DIR) / executable)
+    return cmake_path
 
 setup(
     name = 'cualgo',
@@ -144,4 +166,5 @@ setup(
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
     python_requires=">=3.7",
+    setup_requires=['cmake >= 3.9', 'wheel', 'pybind11'],
 )
