@@ -122,7 +122,6 @@ class CMakeBuild(build_ext):
 
 setup(
     name = 'cualgo',
-    packages = ['cualgo'],
     version = '0.1.1',
     license='MIT',
     description = 'A Pytnon library containing basic algorithm with GPU-accelerated computing.',
