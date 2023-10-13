@@ -10,7 +10,7 @@
 namespace bk = cualgo_backends;
 namespace py = pybind11;
 
-static inline constexpr auto kDocFloydWarshall = "Apply Floyd-Warshall algorithm to find shortest path of each pair of source/sink.";
+static constexpr auto kDocFloydWarshall = "Apply Floyd-Warshall algorithm to find shortest path of each pair of source/sink.";
 
 PYBIND11_MODULE(cualgo, m) {
     m.doc() = R"(CuAlgo

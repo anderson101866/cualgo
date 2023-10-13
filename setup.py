@@ -115,13 +115,17 @@ class CMakeBuild(build_ext):
             build_temp.mkdir(parents=True)
         #find cmake from python package
         cmake = find_cmake()
-        #find c++ compiler
-        if not shutil.which('gcc'):
-            raise FileNotFoundError('"gcc" not found')
-        if not shutil.which('g++'):
-            raise FileNotFoundError('"g++" not found')
-        if not shutil.which('make'):
-            raise FileNotFoundError('"make" not found')
+        if sys.platform != 'win32':
+            #find c++ compiler
+            if not shutil.which('gcc'): #clang doesn't work with nvcc for now.
+                raise FileNotFoundError('"gcc" not found')
+            if not shutil.which('g++'):
+                raise FileNotFoundError('"g++" not found')
+            if not shutil.which('make'):
+                raise FileNotFoundError('"make" not found')
+        else:
+            pass #For Windows: let cmake decide.. TODO: make it better
+        
         #find pybind11
         import pybind11            
         cmake_args += [f'-Dpybind11_DIR={pybind11.get_cmake_dir()}']

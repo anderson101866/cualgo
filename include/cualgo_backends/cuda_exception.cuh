@@ -19,7 +19,6 @@ class CudaException : public std::logic_error {
         const char* Func() const { return func_; }
 private:
     static std::string ComposeErrMsg(cudaError_t err, const char* file, int line) {
-        static_assert(__cplusplus >= 201304L, "Doesn't support User-defined literals for string types");
         return std::string("cudaError_t(") + std::to_string(err) + ") - " + cudaGetErrorString(err) + 
                "\n  at " + file + ':' + std::to_string(line);
     }
