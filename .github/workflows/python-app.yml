@@ -49,13 +49,14 @@ jobs:
     - name: Build wheel
       run: |
         python setup.py bdist_wheel
-    - name: Test if library built
+    - name: Get built wheel
+      id: get-built-wheel
+      run: echo "WHEEL_PATH=$(ls dist/cualgo*.whl)" >> "$GITHUB_OUTPUT"
+    - name: Run UnitTest
+      env:
+        WHEEL_PATH: ${{ steps.get-built-wheel.outputs.WHEEL_PATH }}
       run: |
-        ls dist/cualgo*.whl
-        echo ::set-env name=WHEEL_PATH::$(ls dist/cualgo*.whl)
-    - name: Test Functionality
-      run: |
-        pip install ${env.WHEEL_PATH}
+        pip install ${WHEEL_PATH}
         python -c "import cualgo; print(cualgo); INF = 9999; graph = [[0  , 7  , INF, 8],[INF, 0  , 5  , INF],[INF, INF, 0  , 2],[INF, INF, INF, 0]]; print(cualgo.floydwarshall(graph))"
     #TODO:
     # - name: Test with pytest
