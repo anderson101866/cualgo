@@ -69,7 +69,7 @@ template <typename T>
 std::vector<std::vector<T>> FloydWarshallDriver(std::vector<std::vector<T>> &&graph) {
     if (graph.empty())
         return graph;
-    const int N = graph.size();
+    const auto N = graph.size();
     if (std::any_of(graph.begin(), graph.end(), [N](std::vector<T> row) { return row.size() != N; }))
         throw std::invalid_argument("The input adjacent matrix, `graph`, should be a 2D-square");
     std::vector<T> h_graph(N*N);
