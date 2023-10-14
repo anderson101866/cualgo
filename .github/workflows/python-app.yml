@@ -24,6 +24,7 @@ jobs:
     # env:
     #   PY_VERS: ${{ matrix.py_vers }}
     steps:
+    - uses: actions/checkout@v3
     - name: Prepare cuda toolkit
       uses: Jimver/cuda-toolkit@v0.2.11
       id: cuda-toolkit
