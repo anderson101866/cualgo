@@ -30,13 +30,15 @@ jobs:
       with:
         update-conda: true
         python-version: ${{ matrix.py_vers }}
-        conda-channels: anaconda, nvidia
+        conda-channels: anaconda, nvidia, conda-forge
     - name: Install CUDA environment in conda
       run: |
         conda --version
         conda install cuda -c nvidia/label/cuda-11.3.0 --yes
     - name: Check CUDA compiler
       run: nvcc --version
+    - name: Install GCC 7
+      run: conda install -c "conda-forge/label/gcc7" gxx_linux-64
     # - name: Set up Python
     #   uses: actions/setup-python@v3
     #   with:
