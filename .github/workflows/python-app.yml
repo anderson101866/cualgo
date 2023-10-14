@@ -34,7 +34,7 @@ jobs:
     - name: Install CUDA environment in conda
       run: |
         conda --version
-        conda install cuda
+        conda install cuda --yes
         nvcc --version 
     # - name: Manually download CUDA toolkit
     #   uses: Jimver/cuda-toolkit@v0.2.11
