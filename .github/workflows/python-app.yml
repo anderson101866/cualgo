@@ -1,14 +1,14 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: CuAlgo package build
+name: CuAlgo build
 
 on:
   workflow_dispatch:
   push:
-    branches: [ "CI_dev" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "CI_dev" ]
+    branches: [ "main" ]
 
 permissions:
   contents: read
