@@ -2,6 +2,8 @@
 
 CuAlgo is a Python library benefiting from GPU-accelerated computing, featuring a collection of fundamental algorithms implemented with CUDA. Currently, it includes the Floyd-Warshall algorithm for graph analysis, showcasing the potential of GPU acceleration.
 
+[![PyPI package](https://repology.org/badge/version-for-repo/pypi/python:cualgo.svg?header=lastest%20version)](https://repology.org/project/python:cualgo/versions) [![PyPI - Version](https://img.shields.io/pypi/v/cualgo)](https://pypi.org/project/cualgo/) [![Python Versions](https://img.shields.io/pypi/pyversions/cualgo.svg)](https://pypi.org/project/cualgo/)
+
 ## Key Features
 #### Graph Algorithms: 
  - Floyd-Warshall algorithm
@@ -45,17 +47,15 @@ The charts illustrate the speedup achieved by CuAlgo's GPU-accelerated algorithm
 **NOTE: [Recommended]** You can skip 1 and 2. by using [conda](https://repo.anaconda.com/archive/), see [Installation](#Installation) below
 
 ## Installation
-### Linux:
+### Linux / Windows [Recommended]:
 ```bash
 conda install cuda -c nvidia
+python -m pip install --upgrade pip
 pip install cualgo
 ```
-
-<!-- ### Windows:
-1. [Download Visual Studio with C++ development](https://visualstudio.microsoft.com/en-us/downloads/)2
-2. [Install CUDA toolkit](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64) (Make sure to install **Runtime**, **Development**, and **Driver**)
-3. `pip install cualgo` -->
-
+### Windows (without conda):
+1. Install NVIDIA latest GPU driver by yourself
+2. `python -m pip install --upgrade pip && pip install cualgo`
 
 
 ## Sample Code
