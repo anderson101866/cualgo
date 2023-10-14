@@ -8,6 +8,7 @@ on:
     branches: [ "CI_dev" ]
   pull_request:
     branches: [ "CI_dev" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,8 +16,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: [ubuntu-latest, x64, gpu]
-
+    runs-on: ubuntu-latest #[self-hosted, linux, x64, gpu]
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
