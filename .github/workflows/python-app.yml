@@ -1,0 +1,70 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: CuAlgo build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: "Build CuAlgo & try to install"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        py_vers: ["3.10"]
+    timeout-minutes: 30
+    env:
+      PY_VERS: ${{ matrix.py_vers }}
+    steps:
+    - uses: actions/checkout@v3
+    # - name: Setup conda
+    #   uses: s-weigand/setup-conda@v1
+    #   with:
+    #     update-conda: true
+    #     python-version: ${{ matrix.py_vers }}
+    #     conda-channels: anaconda, nvidia, conda-forge
+    # - name: Install CUDA environment in conda
+    #   run: |
+    #     conda --version
+    #     conda install cuda -c nvidia/label/cuda-11.3.0 --yes
+    # - name: Check CUDA compiler
+    #   run: nvcc --version
+    # - name: Install GCC 7
+    #   run: conda install -c "conda-forge/label/gcc7" gxx_linux-64
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.py_vers }}
+    - name: Manually download CUDA toolkit
+      uses: Jimver/cuda-toolkit@v0.2.11
+      id: cuda-toolkit
+      with:
+        cuda: '12.2.0'
+        method: 'network'
+        sub-packages: '["nvcc", "nvrtc", "runtime", "sanitizer"]'
+        #linux-local-args: '["--toolkit"]' #see what's available in https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#advanced-options
+    - run: |
+        echo "Installed cuda version is: ${{steps.cuda-toolkit.outputs.cuda}}"
+        echo "Cuda install location: ${{steps.cuda-toolkit.outputs.CUDA_PATH}}"
+    - name: Upgrade pip and wheel
+      run: |
+        python -m pip install --upgrade setuptools pip wheel
+    - name: Build wheel
+      run: |
+        python setup.py bdist_wheel
+    - name: Get built wheel
+      id: get-built-wheel
+      run: echo "WHEEL_PATH=$(ls dist/cualgo*.whl)" >> "$GITHUB_OUTPUT"
+    - name: Validating wheel installation
+      env:
+        WHEEL_PATH: ${{ steps.get-built-wheel.outputs.WHEEL_PATH }}
+      run: |
+        pip install ${WHEEL_PATH}
