@@ -36,9 +36,7 @@ jobs:
         conda --version
         conda install cuda -c nvidia/label/cuda-11.3.0 --yes
     - name: Check CUDA compiler
-      run: nvcc --version 
-    - name: Check GPU Driver
-      run: nvidia-smi
+      run: nvcc --version
     # - name: Set up Python
     #   uses: actions/setup-python@v3
     #   with:
