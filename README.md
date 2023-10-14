@@ -38,16 +38,14 @@ The charts illustrate the speedup achieved by CuAlgo's GPU-accelerated algorithm
 
 
 ## Prerequisites
-1. GCC compiler with C++ support (gcc works better with CUDA's compiler)
-2. GNU Makefile
-3. Python 3.7+ with pip available
-4. Latest CUDA toolkit installed and nvcc compiler.
+(For linux, need GCC compiler with C++ support (gcc works better with CUDA's compiler), and GNU make)
+1. Python 3.7+ with pip available
+2. Latest CUDA toolkit installed with nvcc compiler. [(download here)](https://developer.nvidia.com/cuda-downloads)
 
-**NOTE**: [Recommended] You can skip 3. and 4. by using [conda](https://repo.anaconda.com/archive/).
+**NOTE: [Recommended]** You can skip 1 and 2. by using [conda](https://repo.anaconda.com/archive/), see [Installation](#Installation) below
 
 ## Installation
 ### Linux:
-Assume prerequisites 1. and 2. are satisfied.
 ```bash
 conda install cuda -c nvidia
 pip install cualgo
