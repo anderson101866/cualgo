@@ -29,7 +29,7 @@ jobs:
       id: cuda-toolkit
       with:
         cuda: '12.1.0'
-        method: 'local'
+        method: 'network'
         linux-local-args: '["--toolkit"]'
     - run: |
         echo "Installed cuda version is: ${{steps.cuda-toolkit.outputs.cuda}}"
