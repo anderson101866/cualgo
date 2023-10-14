@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Python application
+name: CuAlgo package build
 
 on:
   workflow_dispatch:
@@ -15,12 +15,12 @@ permissions:
 
 jobs:
   build:
-    name: "Build & Test CuAlgo"
-    runs-on: [linux, x64, gpu]
+    name: "Build CuAlgo & try to install"
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         py_vers: ["3.10"]
-    timeout-minutes: 40
+    timeout-minutes: 30
     env:
       PY_VERS: ${{ matrix.py_vers }}
     steps:
@@ -63,13 +63,8 @@ jobs:
     - name: Get built wheel
       id: get-built-wheel
       run: echo "WHEEL_PATH=$(ls dist/cualgo*.whl)" >> "$GITHUB_OUTPUT"
-    - name: Run UnitTest
+    - name: Validating wheel installation
       env:
         WHEEL_PATH: ${{ steps.get-built-wheel.outputs.WHEEL_PATH }}
       run: |
         pip install ${WHEEL_PATH}
-        python -c "import cualgo; print(cualgo); INF = 9999; graph = [[0  , 7  , INF, 8],[INF, 0  , 5  , INF],[INF, INF, 0  , 2],[INF, INF, INF, 0]]; print(cualgo.floydwarshall(graph))"
-    #TODO:
-    # - name: Test with pytest
-    #   run: |
-    #     pytest
