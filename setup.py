@@ -156,7 +156,7 @@ setup(
     author = 'Anderson Meng',
     author_email = 'andersonchi1018@gmail.com',
     url = 'https://github.com/anderson101866/cualgo',
-    download_url = 'https://github.com/anderson101866/cualgo/archive/refs/tags/v0.1.0.tar.gz',
+    download_url = 'https://github.com/anderson101866/cualgo/archive/refs/tags/v0.1.1.tar.gz',
     keywords = ['python', 'cuda', 'gpu', 'algorithm', 'numpy'],
     classifiers=[
     'Development Status :: 4 - Beta',
