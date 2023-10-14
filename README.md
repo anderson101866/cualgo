@@ -2,7 +2,7 @@
 
 CuAlgo is a Python library benefiting from GPU-accelerated computing, featuring a collection of fundamental algorithms implemented with CUDA. Currently, it includes the Floyd-Warshall algorithm for graph analysis, showcasing the potential of GPU acceleration.
 
-[![PyPI package](https://repology.org/badge/version-for-repo/pypi/python:cualgo.svg?header=lastest%20version)](https://repology.org/project/python:cualgo/versions) [![PyPI - Version](https://img.shields.io/pypi/v/cualgo)](https://pypi.org/project/cualgo/) [![Python Versions](https://img.shields.io/pypi/pyversions/cualgo.svg)](https://pypi.org/project/cualgo/)
+[![PyPI package](https://repology.org/badge/version-for-repo/pypi/python:cualgo.svg?header=lastest%20version)](https://repology.org/project/python:cualgo/versions) [![PyPI - Version](https://img.shields.io/pypi/v/cualgo)](https://pypi.org/project/cualgo/) [![Python Versions](https://img.shields.io/pypi/pyversions/cualgo.svg)](https://pypi.org/project/cualgo/) [![CuAlgo build](https://github.com/anderson101866/cualgo/actions/workflows/python-app.yml/badge.svg)](https://github.com/anderson101866/cualgo/actions/workflows/python-app.yml)
 
 ## Key Features
 #### Graph Algorithms: 
