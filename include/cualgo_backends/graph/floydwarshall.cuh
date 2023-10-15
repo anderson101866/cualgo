@@ -13,7 +13,7 @@ namespace graph {
 template <typename T, int kUnrollX, int kUnrollY>
 __global__ void FloydWarshallCoreInnerLoop(T *graph, const int N, const size_t kPitch, const int k) {
     static_assert(kUnrollX > 0 && kUnrollY > 0, "`kUnrollX` and `kUnrollY` should be both positive.");
-    const int j = blockDim.x*kUnrollX * blockIdx.x + threadIdx.x;
+    const int j = blockDim.x*kUnrollX * blockIdx.x + threadIdx.x; //coalesced memory access
     const int i = blockDim.y*kUnrollY * blockIdx.y + threadIdx.y;
 
     //unrolling kUnrollY*kUnrollX
@@ -39,7 +39,7 @@ __global__ void FloydWarshallCore(T *graph, const int N, const size_t kPitch) {
     dim3 grid(CeilDiv(N, block.x*UnrollX), CeilDiv(N, block.y*UnrollY));
     for (int k = 0; k < N; ++k) {
         FloydWarshallCoreInnerLoop<T, UnrollX, UnrollY><<<grid, block>>>(graph, N, kPitch, k);
-        if (cudaPeekAtLastError() != cudaSuccess)
+        if (cudaPeekAtLastError() != cudaSuccess) //error has happened, stop here and early return
             return;
     }
 }
