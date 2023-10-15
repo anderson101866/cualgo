@@ -63,7 +63,7 @@ pip install cualgo
 
 Support data type of `Numpy`.
 ```python
-import cualgo
+from cualgo import graph as cg
 import numpy as np
 graph = np.array([
     [0     , 7     , np.inf, 8],
@@ -71,13 +71,13 @@ graph = np.array([
     [np.inf, np.inf, 0     , 2],
     [np.inf, np.inf, np.inf, 0]
 ], dtype=np.float64)
-print(cualgo.floydwarshall(graph))
+print(cg.floydwarshall(graph))
 # [[0.0, 7.0, 12.0, 8.0], [inf, 0.0, 5.0, 7.0], [inf, inf, 0.0, 2.0], [inf, inf, inf, 0.0]]
 ```
 
 Or just simply pass 2D `list` in python
 ```python
-import cualgo
+from cualgo import graph as cg
 INF = 9999
 graph = [
     [0  , 7  , INF, 8],
@@ -85,7 +85,7 @@ graph = [
     [INF, INF, 0  , 2],
     [INF, INF, INF, 0]
 ]
-print(cualgo.floydwarshall(graph))
+print(cg.floydwarshall(graph))
 # [[0, 7, 12, 8], [9999, 0, 5, 7], [9999, 9999, 0, 2], [9999, 9999, 9999, 0]]
 ```
 

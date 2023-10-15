@@ -26,11 +26,14 @@ Provide the following facility with CUDA implementation:
 #else
     m.attr("__version__") = "dev";
 #endif
-
-    m.def("floydwarshall", 
-          py::overload_cast<std::vector<std::vector<double>>&&>(&bk::graph::FloydWarshallDriver<double>), 
-          kDocFloydWarshall);
-    m.def("floydwarshall", 
-          py::overload_cast<std::vector<std::vector<int>>&&>(&bk::graph::FloydWarshallDriver<int>), 
-          kDocFloydWarshall);
+    //cualgo.graph
+    {
+        auto m_graph = m.def_submodule("graph");
+        m_graph.def("floydwarshall", 
+            py::overload_cast<std::vector<std::vector<double>>&&>(&bk::graph::FloydWarshallDriver<double>), 
+            kDocFloydWarshall);
+        m_graph.def("floydwarshall", 
+            py::overload_cast<std::vector<std::vector<int>>&&>(&bk::graph::FloydWarshallDriver<int>), 
+            kDocFloydWarshall);
+    }
 }
