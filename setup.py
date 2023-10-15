@@ -148,7 +148,7 @@ def find_cmake():
 
 setup(
     name = 'cualgo',
-    version = '0.1.2',
+    version = '0.2.0',
     license='MIT',
     description = 'A Pytnon library containing basic algorithm with GPU-accelerated computing.',
     long_description=(Path(__file__).parent  / "README.md").read_text(),
@@ -156,7 +156,7 @@ setup(
     author = 'Anderson Meng',
     author_email = 'andersonchi1018@gmail.com',
     url = 'https://github.com/anderson101866/cualgo',
-    download_url = 'https://github.com/anderson101866/cualgo/archive/refs/tags/v0.1.2.tar.gz',
+    download_url = 'https://github.com/anderson101866/cualgo/archive/refs/tags/v0.2.0.tar.gz',
     keywords = ['python', 'cuda', 'gpu', 'algorithm', 'numpy'],
     classifiers=[
     'Development Status :: 4 - Beta',
