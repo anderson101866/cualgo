@@ -11,7 +11,7 @@ string(TOUPPER "${CMAKE_BUILD_TYPE}" uppercase_CMAKE_BUILD_TYPE)
 if(uppercase_CMAKE_BUILD_TYPE MATCHES DEBUG)
     target_compile_options(cualgo PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-g -G>)
 endif(uppercase_CMAKE_BUILD_TYPE MATCHES DEBUG)
-set_property(TARGET cualgo PROPERTY CUDA_ARCHITECTURES 80-real 86-virtual)
+set_property(TARGET cualgo PROPERTY CUDA_ARCHITECTURES 50-real 52-real 60-real 61-real 70-real 75-real 80-real 86-real 86-virtual)
 
 #make host/device codes relocatable
 set_target_properties(cualgo PROPERTIES POSITION_INDEPENDENT_CODE ON)
