@@ -146,6 +146,13 @@ def find_cmake():
         cmake_path = os.fspath(Path(cmake.CMAKE_BIN_DIR) / executable)
     return cmake_path
 
+extras_require = {
+    'test': [
+        # 4.2 <= pytest < 6.2 is slow collecting tests and times out on CI.
+        'pytest>=7.2',
+        'numpy',
+    ],
+}
 setup(
     name = 'cualgo',
     version = '0.2.0',
@@ -183,4 +190,5 @@ setup(
     zip_safe=False,
     python_requires=">=3.7",
     setup_requires=['cmake >= 3.9', 'wheel', 'pybind11'],
+    extras_require = extras_require,
 )

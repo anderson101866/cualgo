@@ -1,5 +1,5 @@
 include README.md LICENSE pybind11/LICENSE
 graft include
 graft src
-graft test
+graft tests
 global-include CMakeLists.txt *.cmake
