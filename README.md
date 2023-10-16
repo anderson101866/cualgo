@@ -51,12 +51,12 @@ The charts illustrate the speedup achieved by CuAlgo's GPU-accelerated algorithm
 ### Linux / Windows [Recommended]:
 ```bash
 conda install cuda -c nvidia
-python -m pip install --upgrade pip
+python -m pip install --upgrade pip setuptools
 pip install cualgo
 ```
 ### Windows (without conda):
 1. Install NVIDIA latest GPU driver by yourself
-2. `python -m pip install --upgrade pip && pip install cualgo`
+2. `python -m pip install --upgrade pip setuptools && pip install cualgo`
 
 
 ## Sample Code
