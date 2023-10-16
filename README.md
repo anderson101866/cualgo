@@ -40,7 +40,7 @@ The charts illustrate the speedup achieved by CuAlgo's GPU-accelerated algorithm
 
 
 ## Prerequisites
-(For linux, need GCC compiler with C++ support (gcc works better with CUDA's compiler), and GNU make)
+(For linux, need GCC compiler with C++ support[^GCC_ONLY], and GNU make)
 1. Latest [NVIDIA GPU driver](https://www.nvidia.com.tw/Download/index.aspx)
 2. *Python 3.7+ with pip available*
 3. *Latest CUDA toolkit installed with nvcc compiler. [(download here)](https://developer.nvidia.com/cuda-downloads)*
@@ -89,3 +89,4 @@ print(cg.floydwarshall(graph))
 # [[0, 7, 12, 8], [9999, 0, 5, 7], [9999, 9999, 0, 2], [9999, 9999, 9999, 0]]
 ```
 
+[^GCC_ONLY]: GCC works more compatible with CUDA's compiler than clang
