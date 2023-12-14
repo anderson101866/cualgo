@@ -15,7 +15,7 @@ CuAlgo is a Python library benefiting from GPU-accelerated computing, featuring 
 - **Cross-Platform Compatibility**: Developed with CMake, CuAlgo supports cross-platform development, enabling seamless compilation on various operating systems.
 
 ## Performance Evaluation
-Explore different implementations of the Floyd-Warshall algorithm using datasets of sizes N=40, N=1000, and N=2000. This section presents a comprehensive analysis of the efficiency improvements achieved through GPU acceleration.
+Explore the Floyd-Warshall implementation using different datasets of sizes N=40, N=1000, and N=2000. This section presents a comprehensive analysis of the efficiency improvements achieved through GPU acceleration.
 
 ### Methodology
 - **CPU Version**: The algorithm is executed on the CPU without GPU acceleration.
@@ -28,7 +28,7 @@ Explore different implementations of the Floyd-Warshall algorithm using datasets
 
 The charts illustrate the speedup achieved by CuAlgo's GPU-accelerated algorithms over CPU-based implementations. Notably, the optimized GPU version outperforms both the unoptimized GPU and CPU versions when N grows large, emphasizing the impact of optimization on algorithm efficiency.
 
-### Hardware and Software Information:
+#### Hardware and Software Information:
 | <!--  --> | <!--                            --> |
 |-----------|-------------------------------------|
 | CPU       | AMD Ryzen 9 5900X 12-Core Processor |
